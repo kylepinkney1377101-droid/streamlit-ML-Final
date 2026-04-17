@@ -46,24 +46,24 @@ with col1:
     try:
         # Load the annotated image you saved in Phase 4
         img = Image.open('annotated_car_image.jpg')
-        st.image(img, caption="COCO Class 2 Confirmed", use_column_width=True)
+        st.image(img, caption="COCO Class 2 Confirmed", use_container_width=True)
     except FileNotFoundError:
         st.warning("Please ensure 'annotated_car_image.jpg' is in the same folder.")
 
 with col2:
     st.subheader("Model Predictions")
     
-    # Reconstruct the feature row for prediction
+    # Reconstruct the feature row for prediction in the EXACT order the model was trained on
     X_input = pd.DataFrame({
         'year': [selected_car_data['year']],
         'cylinders': [selected_car_data['cylinders']],
         'displ': [selected_car_data['displ']],
         'is_electrified': [selected_car_data['is_electrified']],
         'gear_count': [selected_car_data['gear_count']],
-        'trany_type_Manual': [1 if selected_car_data['trany_type'] == 'Manual' else 0],
-        'trany_type_Other/Unknown': [1 if selected_car_data['trany_type'] == 'Other/Unknown' else 0],
         'drive_grouped_AWD_4WD': [1 if selected_car_data['drive_grouped'] == 'AWD_4WD' else 0],
-        'drive_grouped_Unknown': [1 if selected_car_data['drive_grouped'] == 'Unknown' else 0]
+        'drive_grouped_Unknown': [1 if selected_car_data['drive_grouped'] == 'Unknown' else 0],
+        'trany_type_Manual': [1 if selected_car_data['trany_type'] == 'Manual' else 0],
+        'trany_type_Other/Unknown': [1 if selected_car_data['trany_type'] == 'Other/Unknown' else 0]
     })
     
     # Make the predictions
