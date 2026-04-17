@@ -1,0 +1,17 @@
+# Data Manipulation & Machine Learning
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+
+# Visualization & Computer Vision
+matplotlib
+seaborn
+ultralytics
+opencv-python-headless
+Pillow
+
+# Web App & AI Deployment
+streamlit
+ollama
